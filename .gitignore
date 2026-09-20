@@ -3,6 +3,9 @@ node_modules/
 dist/
 .astro/
 dist_old/
+# Local testing and preview
+playwright/
+server.js
 test-results/
 playwright-report/
 
