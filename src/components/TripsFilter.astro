@@ -43,6 +43,8 @@ const TRIPS_DATA: TripItem[] = [
 ];
 
 const categories = ['All', 'Himalayan High Passes', 'Canyons & Caves', 'Motorcycle Trails'];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const normalize = (p: string) => (p.startsWith('/') && !p.startsWith(base + '/')) ? `${base}${p}` : p;
 ---
 
 <div class="space-y-8" id="trips-archive-container">
@@ -66,7 +68,8 @@ const categories = ['All', 'Himalayan High Passes', 'Canyons & Caves', 'Motorcyc
   <!-- Grid of Trip Cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="trips-grid">
     {TRIPS_DATA.map((trip) => {
-      const safeCoverImage = encodeURI(trip.coverImage);
+      const safeCoverImage = encodeURI(normalize(trip.coverImage));
+      const tripUrl = normalize(trip.slug);
       return (
         <article
           data-category={trip.category}
@@ -119,7 +122,7 @@ const categories = ['All', 'Himalayan High Passes', 'Canyons & Caves', 'Motorcyc
               </div>
 
               <h3 class="font-serif text-2xl font-bold text-stone-100 group-hover:text-glacial transition-colors leading-snug">
-                <a href={trip.slug}>
+                <a href={tripUrl}>
                   <span class="absolute inset-0" aria-hidden="true" />
                   {trip.title}
                 </a>

@@ -4,6 +4,8 @@ import SafeImage from '../components/SafeImage.astro';
 import TripCard from '../components/TripCard.astro';
 import ElevationBadge from '../components/ElevationBadge.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const featuredTrips = [
   {
     title: 'Into the Land of Dawn-Lit Mountains: Our Himalayan Winter Road Trip',
@@ -69,7 +71,7 @@ const featuredTrips = [
         <!-- CTA Buttons -->
         <div class="pt-4 flex flex-wrap items-center gap-4">
           <a
-            href="/trips"
+            href={`${base}/trips`}
             class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-glacial text-pine-950 font-sans font-semibold text-sm hover:bg-glacial-light transition-all duration-200 shadow-glow-teal cursor-pointer"
           >
             <span>Explore All Expeditions</span>
@@ -78,7 +80,7 @@ const featuredTrips = [
             </svg>
           </a>
           <a
-            href="/about"
+            href={`${base}/about`}
             class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card text-stone-300 hover:text-white hover:border-glacial/50 text-sm font-sans font-medium transition-colors"
           >
             <span>Read Rider Manifesto</span>
@@ -150,7 +152,7 @@ const featuredTrips = [
           Featured Mountain & Canyon Stories
         </h2>
       </div>
-      <a href="/trips" class="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-glacial hover:text-white transition-colors">
+      <a href={`${base}/trips`} class="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-glacial hover:text-white transition-colors">
         <span>View all trip archives</span>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

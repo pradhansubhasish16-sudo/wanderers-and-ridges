@@ -23,8 +23,11 @@ const {
   lightbox = true,
 } = Astro.props;
 
+// Helper to prefix base URL if needed
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const normalizedSrc = (src.startsWith('/') && !src.startsWith(base + '/')) ? `${base}${src}` : src;
 // Safely encode URI to handle filenames containing spaces or special characters
-const safeSrc = encodeURI(src);
+const safeSrc = encodeURI(normalizedSrc);
 
 const aspectClasses = {
   video: 'aspect-video',

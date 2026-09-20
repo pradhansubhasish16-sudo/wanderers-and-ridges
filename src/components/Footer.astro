@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <footer class="mt-28 border-t border-alpine-border bg-pine-950/90 text-stone-300 relative overflow-hidden">
@@ -43,19 +44,19 @@ const currentYear = new Date().getFullYear();
         </h4>
         <ul class="space-y-2 text-sm font-sans">
           <li>
-            <a href="/trips/arunachal-pradesh-2023" class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
+            <a href={`${base}/trips/arunachal-pradesh-2023`} class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
               <span>Arunachal Winter 2023</span>
               <span class="text-[10px] text-stone-500">15.2k ft</span>
             </a>
           </li>
           <li>
-            <a href="/trips/meghalaya-canyons-2026" class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
+            <a href={`${base}/trips/meghalaya-canyons-2026`} class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
               <span>Meghalaya Canyons 2026</span>
               <span class="text-[10px] text-stone-500">Caves & Rivers</span>
             </a>
           </li>
           <li>
-            <a href="/trips" class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
+            <a href={`${base}/trips`} class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
               <span>Complete Trips Archive</span>
               <span class="text-xs text-glacial">&rarr;</span>
             </a>
@@ -72,7 +73,7 @@ const currentYear = new Date().getFullYear();
           Curated by <strong>Subhasish Pradhan</strong>. Dedicated to responsible high-altitude adventure, respect for indigenous border tribes, and pristine preservation of fragile ecosystems.
         </p>
         <div class="pt-2">
-          <a href="/about" class="inline-flex items-center gap-1 text-xs text-glacial hover:underline">
+          <a href={`${base}/about`} class="inline-flex items-center gap-1 text-xs text-glacial hover:underline">
             Read rider manifesto &amp; photography kit &rarr;
           </a>
         </div>

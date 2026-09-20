@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TripsFilter from '../../components/TripsFilter.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -12,7 +14,7 @@ import TripsFilter from '../../components/TripsFilter.astro';
     <!-- Breadcrumb & Header -->
     <div class="space-y-4 mb-12 max-w-3xl">
       <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-glacial">
-        <a href="/" class="hover:underline">HOME</a>
+        <a href={`${base}/`} class="hover:underline">HOME</a>
         <span>/</span>
         <span class="text-stone-400">TRIP ARCHIVES</span>
       </div>

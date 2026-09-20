@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SafeImage from '../components/SafeImage.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -12,7 +14,7 @@ import SafeImage from '../components/SafeImage.astro';
     <!-- Header -->
     <div class="space-y-4 max-w-3xl">
       <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-glacial">
-        <a href="/" class="hover:underline">HOME</a>
+        <a href={`${base}/`} class="hover:underline">HOME</a>
         <span>/</span>
         <span class="text-stone-400">ABOUT & MANIFESTO</span>
       </div>
