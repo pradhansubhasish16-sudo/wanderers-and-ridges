@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "playwright test --config=playwright/playwright.config.ts"
   },
   "type": "module",
   "dependencies": {
@@ -22,6 +23,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.63.0",
+    "playwright": "^1.63.0",
     "typescript": "^5.8.2"
   }
 }
