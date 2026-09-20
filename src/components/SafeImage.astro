@@ -1,0 +1,105 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  aspectRatio?: 'video' | 'square' | 'wide' | 'portrait' | 'auto';
+  className?: string;
+  priority?: boolean;
+  elevation?: string;
+  location?: string;
+  lightbox?: boolean;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  aspectRatio = 'auto',
+  className = '',
+  priority = false,
+  elevation,
+  location,
+  lightbox = true,
+} = Astro.props;
+
+// Safely encode URI to handle filenames containing spaces or special characters
+const safeSrc = encodeURI(src);
+
+const aspectClasses = {
+  video: 'aspect-video',
+  square: 'aspect-square',
+  wide: 'aspect-[21/9]',
+  portrait: 'aspect-[4/5]',
+  auto: 'min-h-[260px]',
+}[aspectRatio];
+---
+
+<figure class={`group relative overflow-hidden rounded-2xl glass-card transition-all duration-500 ${className}`}>
+  <!-- Image container -->
+  <div class={`relative w-full overflow-hidden ${aspectClasses} bg-pine-900/60`}>
+    <img
+      src={safeSrc}
+      alt={alt}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+      data-lightbox-trigger={lightbox ? 'true' : undefined}
+      data-img-src={safeSrc}
+      data-img-caption={caption || alt}
+      data-img-location={location || ''}
+      data-img-elevation={elevation || ''}
+      onerror="this.classList.add('opacity-40'); this.insertAdjacentHTML('afterend', '<div class=\'absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-xs text-stone-400 font-sans\'><span class=\'text-dawn-ochre mb-1 text-sm font-semibold\'>Mountain Vista</span><span>Asset queued for sync</span></div>');"
+    />
+
+    <!-- Subtle gradient overlay on hover -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-pine-950/80 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
+
+    <!-- Badges overlay (elevation & location) -->
+    {(elevation || location) && (
+      <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
+        {elevation && (
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium tracking-wide bg-pine-950/80 backdrop-blur-md text-glacial border border-glacial/30 shadow-sm">
+            <svg class="w-3 h-3 text-glacial" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+            {elevation}
+          </span>
+        )}
+        {location && (
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-pine-950/80 backdrop-blur-md text-stone-300 border border-white/10 ml-auto shadow-sm">
+            <svg class="w-3 h-3 text-dawn-ochre" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            {location}
+          </span>
+        )}
+      </div>
+    )}
+
+    {lightbox && (
+      <button 
+        type="button" 
+        class="absolute bottom-3 right-3 p-2 rounded-full bg-pine-950/80 text-stone-300 hover:text-glacial border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md backdrop-blur-md cursor-pointer"
+        title="View full image"
+        aria-label="Enlarge image"
+        data-lightbox-btn
+        data-src={safeSrc}
+        data-caption={caption || alt}
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+        </svg>
+      </button>
+    )}
+  </div>
+
+  <!-- Caption container -->
+  {caption && (
+    <figcaption class="p-3.5 bg-pine-900/40 border-t border-white/5 text-xs text-stone-300 font-sans tracking-wide leading-relaxed flex items-start gap-2">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-glacial mt-1.5 shrink-0 animate-pulse" />
+      <span>{caption}</span>
+    </figcaption>
+  )}
+</figure>

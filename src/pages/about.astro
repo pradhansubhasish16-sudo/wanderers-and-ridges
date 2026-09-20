@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SafeImage from '../components/SafeImage.astro';
+---
+
+<BaseLayout
+  title="About the Author & Field Manifesto | Wanderers & Ridges"
+  description="Meet Subhasish Pradhan—motorcyclist, high-altitude road tripper, and chronicler of India's frontier terrains."
+  currentPath="/about"
+>
+  <div class="max-w-5xl mx-auto px-6 pt-12 pb-24 space-y-16">
+    <!-- Header -->
+    <div class="space-y-4 max-w-3xl">
+      <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-glacial">
+        <a href="/" class="hover:underline">HOME</a>
+        <span>/</span>
+        <span class="text-stone-400">ABOUT & MANIFESTO</span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-stone-100 tracking-tight">
+        The Traveler Behind the Ridges
+      </h1>
+      <p class="text-base sm:text-lg text-stone-300 font-sans font-light leading-relaxed">
+        Curating high mountain passes, subterranean rivers, and long-distance motorcycle odysseys across the frontier edges of India.
+      </p>
+    </div>
+
+    <!-- Author Profile Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <!-- Profile Picture -->
+      <div class="md:col-span-5">
+        <SafeImage
+          src="/images/Me/PXL_20260121_085806439.jpg"
+          alt="Subhasish Pradhan on Expedition"
+          caption="Subhasish Pradhan in the field at Wah Umngot River Basin, Meghalaya."
+          aspectRatio="portrait"
+          elevation="Field Expedition"
+          location="Meghalaya Expedition 2026"
+        />
+      </div>
+
+      <!-- Bio & Philosophy -->
+      <div class="md:col-span-7 space-y-6">
+        <div class="p-8 rounded-3xl glass-card border border-white/10 space-y-5">
+          <span class="text-xs font-mono uppercase tracking-widest text-dawn-ochre font-semibold">Field Journal Author</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+            Subhasish Pradhan
+          </h2>
+          <p class="text-sm text-stone-300 font-sans leading-relaxed">
+            I am a traveler, rider, and visual storyteller drawn to remote geographical extremes. Whether traversing 15,000-foot frozen military ridgelines in Western Arunachal Pradesh or swimming into unmapped limestone river caves in East Jaintia Hills, my expeditions are motivated by deep curiosity and respect for raw wilderness.
+          </p>
+          <p class="text-sm text-stone-300 font-sans leading-relaxed">
+            Every expedition documented here is independently planned, driven, and lived alongside a trusted circle of companions. We travel light, stay resilient, and hold reverence for the indigenous communities whose backyard trails we are fortunate enough to traverse.
+          </p>
+
+          <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-pine-900 text-glacial border border-glacial/30">HIMALAYAN TRANSITS</span>
+            <span class="px-2.5 py-1 rounded bg-pine-900 text-dawn-ochre border border-dawn-ochre/30">KARST CAVING</span>
+            <span class="px-2.5 py-1 rounded bg-pine-900 text-stone-300 border border-white/10">MOTORCYCLE TOURING</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gear & Optical Kit Manifesto -->
+    <section class="space-y-8 pt-6 border-t border-white/10">
+      <div class="space-y-2">
+        <span class="text-xs font-mono uppercase tracking-wider text-glacial font-semibold">Technical Essentials</span>
+        <h3 class="font-serif text-3xl font-bold text-stone-100">
+          The Field & Photography Kit
+        </h3>
+        <p class="text-sm text-stone-400 max-w-2xl font-sans leading-relaxed">
+          Tested across sub-zero ice sheets, deep canyon swims, and high-vibration motorcycle mountings:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Kit 1 -->
+        <div class="p-6 rounded-2xl glass-card border border-white/5 space-y-3">
+          <div class="w-8 h-8 rounded-lg bg-pine-800 flex items-center justify-center text-glacial border border-glacial/20">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h4 class="font-serif text-lg font-bold text-stone-100">Imaging & Optics</h4>
+          <ul class="text-xs text-stone-400 font-sans space-y-2 leading-relaxed">
+            <li>• High-resolution computational field sensors (Google Pixel imaging pipeline).</li>
+            <li>• Circular Polarizer (CPL) filters for cutting water glare at Wah Umngot and Sangetsar Lake.</li>
+            <li>• Heavy-duty GorillaPods and aluminum magnetic mounts.</li>
+          </ul>
+        </div>
+
+        <!-- Kit 2 -->
+        <div class="p-6 rounded-2xl glass-card border border-white/5 space-y-3">
+          <div class="w-8 h-8 rounded-lg bg-pine-800 flex items-center justify-center text-dawn-ochre border border-dawn-ochre/20">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <h4 class="font-serif text-lg font-bold text-stone-100">Water & Karst Defense</h4>
+          <ul class="text-xs text-stone-400 font-sans space-y-2 leading-relaxed">
+            <li>• 30L & 10L TPU roll-top IPX8 dry bags for raft excursions.</li>
+            <li>• 650-lumen IP68 waterproof headlamps with red-light night modes.</li>
+            <li>• Gripping felt/rubber aquatic canyoning shoes for slimy gour dams.</li>
+          </ul>
+        </div>
+
+        <!-- Kit 3 -->
+        <div class="p-6 rounded-2xl glass-card border border-white/5 space-y-3">
+          <div class="w-8 h-8 rounded-lg bg-pine-800 flex items-center justify-center text-emerald-400 border border-emerald-400/20">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h4 class="font-serif text-lg font-bold text-stone-100">Alpine Winter Gear</h4>
+          <ul class="text-xs text-stone-400 font-sans space-y-2 leading-relaxed">
+            <li>• 800+ fill RDS down jacket tested to -15°C at Bum La.</li>
+            <li>• Thermal wind-stopper balaclava and gore-tex lined winter mittens.</li>
+            <li>• Portable 12V tyre inflator & steel cable tyre chains for black ice.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Field Contact & Collaboration Card -->
+    <div class="p-8 sm:p-10 rounded-3xl glass-card border border-glacial/30 text-center space-y-4 max-w-2xl mx-auto">
+      <div class="w-12 h-12 rounded-full bg-glacial/20 border border-glacial/40 flex items-center justify-center mx-auto text-glacial">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </div>
+      <h3 class="font-serif text-2xl font-bold text-stone-100">Have Route Questions or Planning a Similar Transit?</h3>
+      <p class="text-sm text-stone-300 font-sans leading-relaxed">
+        Whether you are seeking real-time winter road status for Sela Pass, permit guidance for Bum La, or river cave navigation contacts in Jaintia, feel free to reach out.
+      </p>
+      <div class="pt-2">
+        <a
+          href="mailto:contact@subhasishpradhan.com"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-glacial text-pine-950 font-sans font-semibold text-sm hover:bg-glacial-light transition-colors"
+        >
+          <span>Send Field Dispatch</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

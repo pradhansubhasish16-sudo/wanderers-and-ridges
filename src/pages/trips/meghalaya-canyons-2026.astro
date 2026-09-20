@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SafeImage from '../../components/SafeImage.astro';
+import ElevationBadge from '../../components/ElevationBadge.astro';
+
+const companions = ['Sovan', 'Aswini'];
+---
+
+<BaseLayout
+  title="Chasing Clouds, Craters & Crystal Waters: A Meghalaya Motorcycle Odyssey | Wanderers & Ridges"
+  description="A high-adrenaline motorcycle journey through limestone canyons, the cobalt amphitheater of Phe Phe Falls, swimming into Krem Chympe cave on bamboo rafts, and prehistoric fossils."
+  image="/images/meghalaya/PXL_20260120_083114682 Krem Chympe.jpg"
+  currentPath="/trips/meghalaya-canyons-2026"
+>
+  <!-- Header / Hero Banner -->
+  <header class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 space-y-8">
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-glacial">
+        <a href="/" class="hover:underline">HOME</a>
+        <span>/</span>
+        <a href="/trips" class="hover:underline">TRIPS</a>
+        <span>/</span>
+        <span class="text-stone-400">MEGHALAYA 2026</span>
+      </div>
+
+      <!-- Main Title -->
+      <div class="space-y-4">
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-stone-100 leading-tight">
+          Chasing Clouds, Craters & Crystal Waters: <br class="hidden sm:inline" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-glacial to-dawn-ochre">
+            A Meghalaya Motorcycle Odyssey
+          </span>
+        </h1>
+        <p class="text-stone-300 font-sans text-base sm:text-lg font-light leading-relaxed max-w-3xl">
+          Riding across West Jaintia, East Jaintia, and East Khasi Hills—carving along limestone plateau cliffs, paddling bamboo rafts into the sunless depths of Krem Chympe, and walking suspended high above glassy riverbeds.
+        </p>
+      </div>
+
+      <!-- Metadata Bar -->
+      <div class="p-6 rounded-3xl glass-card border border-white/10 flex flex-wrap items-center justify-between gap-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <ElevationBadge elevation="4,900 FT" location="SHILLONG PLATEAU" type="canyon" />
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-medium bg-pine-900/80 text-stone-300 border border-white/10">
+            <svg class="w-3.5 h-3.5 text-dawn-ochre" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Jan 17 – Jan 23, 2026
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-medium bg-pine-900/80 text-glacial border border-white/10">
+            <svg class="w-3.5 h-3.5 text-glacial" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            Motorcycle Touring & Karst Caving
+          </span>
+        </div>
+
+        <!-- Expedition Crew -->
+        <div class="text-xs text-stone-400 font-sans flex items-center gap-2">
+          <span class="text-stone-500">Riders:</span>
+          <div class="flex flex-wrap gap-1 text-stone-300 font-medium">
+            {companions.map((name, i) => (
+              <span>{name}{i < companions.length - 1 ? ' &' : ''}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Lead Cover Photo: Krem Chympe Raft -->
+      <div class="mt-8">
+        <SafeImage
+          src="/images/meghalaya/PXL_20260120_083114682 Krem Chympe.jpg"
+          alt="Krem Chympe Cavern Mouth"
+          caption="Cover: Steering handcrafted bamboo rafts straight into the subterranean cathedral arch of Krem Chympe cave."
+          aspectRatio="wide"
+          location="Khaddum, East Jaintia Hills"
+          priority={true}
+        />
+      </div>
+    </div>
+  </header>
+
+  <!-- Editorial Itinerary Body -->
+  <article class="max-w-4xl mx-auto px-6 space-y-20">
+    <!-- Day 1: Phe Phe Falls -->
+    <section class="space-y-6 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 01 • JAN 19
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          The Cobalt Basin: Phe Phe Falls
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        After a crisp early morning motorcycle blast across the undulating plateau of West Jaintia Hills, we hiked down through a maze of sandstone cliffs toward Shkentalang. The roar of Phe Phe Falls announced itself through the mist. The two-tier cataract plunges with hypnotic rhythm into a sheer, natural circular amphitheater filled with deep cobalt waters.
+      </p>
+
+      <SafeImage
+        src="/images/meghalaya/PXL_20260119_103856327 Phe Phe Falls.jpg"
+        alt="Phe Phe Falls Cobalt Amphitheater"
+        caption="The two-tier cataract of Phe Phe Falls plunging into its natural cobalt amphitheater pool."
+        aspectRatio="video"
+        location="Shkentalang / Jarain, West Jaintia Hills"
+      />
+    </section>
+
+    <!-- Day 2: Krem Chympe Subterranean River System -->
+    <section class="space-y-8 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-400/20 text-emerald-400 border border-emerald-400/30">
+          DAY 02 • JAN 20
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          The Subterranean River: Krem Chympe (East Jaintia Hills)
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Located near remote Khaddum village, Krem Chympe is India’s premier karst cave river system. Reaching it requires a 45-minute technical descent down slippery forest gulches. Wearing life jackets and armed with headlamps, we entered the emerald gorge leading into the colossal cathedral cavern.
+      </p>
+
+      <!-- 2-Grid: Approach & Arch -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <SafeImage
+          src="/images/meghalaya/PXL_20260120_082326099 Krem Chympe River Gorge.jpg"
+          alt="Swimming approach into Krem Chympe gorge"
+          caption="Swimming with life jackets through the river gorge toward the cave entrance."
+          aspectRatio="square"
+          location="Khaddum Canyon Gorge"
+        />
+        <SafeImage
+          src="/images/meghalaya/PXL_20260120_083114682 Krem Chympe.jpg"
+          alt="Bamboo raft entering cave"
+          caption="Steering bamboo rafts straight into the cavern mouth of Krem Chympe."
+          aspectRatio="square"
+          location="Cavern Mouth, Krem Chympe"
+        />
+      </div>
+
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Inside, natural gour dams form a series of underground terraced pools. Swimming through pitch-black subterranean chambers where only headlamp beams illuminated soaring stalactite ceilings was an otherworldly rush. Just downstream, the river cascades out into a radiant turquoise lagoon framed by dense jungle foliage.
+      </p>
+
+      <!-- 2-Grid: Gour Dam & Waterfall -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <SafeImage
+          src="/images/meghalaya/PXL_20260120_092047357 Krem Chympe.jpg"
+          alt="Floating in cave pool"
+          caption="Floating inside the natural underground freshwater pools of the cave system."
+          aspectRatio="square"
+          location="Subterranean Gour Dam"
+        />
+        <SafeImage
+          src="/images/meghalaya/PXL_20260120_101615465 Chympe Waterfall.jpg"
+          alt="Chympe Waterfall Lagoon"
+          caption="Swimming under the wide curtain of Chympe Falls cascading into the turquoise lagoon."
+          aspectRatio="square"
+          location="Chympe Lagoon Falls"
+        />
+      </div>
+    </section>
+
+    <!-- Day 3: Shnongpdeng & Wah Umngot -->
+    <section class="space-y-6 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 03 • JAN 21
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          The Crystal River: Shnongpdeng & Wah Umngot
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Heading south toward the Bangladesh plains, we reached the transparent waters of Shnongpdeng on the Wah Umngot River. Suspended dozens of feet above the river, the pedestrian suspension bridge offers dizzying vistas of traditional wooden country boats seemingly floating on thin air over pebble-strewn riverbeds.
+      </p>
+
+      <SafeImage
+        src="/images/meghalaya/PXL_20260121_085139335 mawlynnong-bridge.jpg"
+        alt="Suspension bridge over Wah Umngot river"
+        caption="High suspension footbridge over the transparent currents of the Wah Umngot River."
+        aspectRatio="video"
+        location="Shnongpdeng / Dawki"
+      />
+    </section>
+
+    <!-- Day 4: Prehistoric Oceans: Mawsmai Cave Fossils -->
+    <section class="space-y-6 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-dawn-ochre/20 text-dawn-ochre border border-dawn-ochre/30">
+          DAY 04 • JAN 22
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          Prehistoric Oceans: Mawsmai Cave Fossils
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Ascending into the high cloud forests of Sohra (Cherrapunjee), we explored the well-preserved limestone passages of Mawsmai Cave. Examining the wet limestone walls under macro focus reveals fossilized marine shells—gastropods and mollusks—frozen in stone from 50 million years ago when this entire mountain tableland lay submerged at the bottom of the ancient Tethys Sea.
+      </p>
+
+      <SafeImage
+        src="/images/meghalaya/PXL_20260122_094328761 mawsmai-cave.jpg"
+        alt="Mawsmai Cave Marine Fossils"
+        caption="50-million-year-old marine gastropod fossils embedded in the limestone walls of Mawsmai Cave."
+        aspectRatio="video"
+        location="Mawsmai Cave, Cherrapunjee"
+      />
+    </section>
+
+    <!-- Day 5: Grand Canyon of Meghalaya: Mawkdok Dympep Valley -->
+    <section class="space-y-6 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 05 • JAN 23
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          The Grand Canyon: Mawkdok Dympep Valley
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        On our final motorcycle sprint along the scenic Sohra–Shillong Highway, the earth opens into the colossal V-shaped gorge of Mawkdok Dympep Valley. As early morning sunlight slices through mist clinging to perpendicular jungle cliffs, the true geological grandeur of the Khasi tablelands is laid bare in breathtaking scale.
+      </p>
+
+      <SafeImage
+        src="/images/meghalaya/PXL_20260123_102628074 Mawkdok Dympep Valley.jpg"
+        alt="Mawkdok Dympep Gorge Panorama"
+        caption="Morning sunlight casting sharp shadows across the deep V-shaped gorges of Mawkdok Dympep Valley."
+        aspectRatio="video"
+        location="Mawkdok Dympep Valley Viewpoint"
+      />
+    </section>
+
+    <!-- Travel Logistics & Caving Tips -->
+    <section class="pt-8 border-t border-white/10">
+      <div class="p-8 rounded-3xl glass-card border border-glacial/30 space-y-6">
+        <div class="flex items-center gap-2 text-glacial">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="font-serif text-xl font-bold text-stone-100">
+            Meghalaya Expedition Field Logistics & Gear Notes
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm font-sans">
+          <div class="space-y-2">
+            <h4 class="font-semibold text-glacial text-xs uppercase tracking-wider">Motorcycle Choice</h4>
+            <p class="text-xs text-stone-300 leading-relaxed">
+              150cc+ adventure or touring motorcycles (e.g. Himalayan, Xpulse, Scram) excel on Meghalaya backroads. Rural routes near Khaddum and Jarain feature broken gravel switchbacks and steep inclines.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-semibold text-dawn-ochre text-xs uppercase tracking-wider">Cavern Safety & River Kit</h4>
+            <p class="text-xs text-stone-300 leading-relaxed">
+              Never enter Krem Chympe without life jackets and certified local Khaddum village guides. Carry IPX8 rated waterproof dry-bags for cameras and smartphones, plus rubber-studded aquatic footwear for mossy rocks.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-semibold text-emerald-400 text-xs uppercase tracking-wider">Seasonal Timing</h4>
+            <p class="text-xs text-stone-300 leading-relaxed">
+              Mid-December through late January offers peak water clarity. The monsoons (June–September) flood river caves and transform gentle crystal streams into violent unnavigable torrents.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation between expeditions -->
+    <div class="pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10">
+      <a href="/trips/arunachal-pradesh-2023" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-glacial/20 text-glacial hover:bg-glacial hover:text-pine-950 transition-all text-sm font-semibold">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Previous Expedition: Arunachal Pradesh 2023</span>
+      </a>
+
+      <a href="/trips" class="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-white transition-colors">
+        <span>Back to Trip Archives</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </article>
+</BaseLayout>

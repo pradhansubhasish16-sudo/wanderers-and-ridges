@@ -1,0 +1,88 @@
+---
+// Interactive fullscreen image lightbox for editorial trip photography
+---
+
+<div id="image-lightbox" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pine-950/90 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300">
+  <!-- Close Button -->
+  <button id="lightbox-close" class="absolute top-6 right-6 p-3 rounded-full bg-pine-900/80 border border-white/10 text-stone-300 hover:text-white hover:border-glacial transition-colors cursor-pointer z-50">
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+    <span class="sr-only">Close image preview</span>
+  </button>
+
+  <!-- Modal Content Container -->
+  <div class="relative max-w-6xl max-h-[90vh] w-full flex flex-col items-center justify-center">
+    <div class="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-pine-950/40">
+      <img id="lightbox-img" src="" alt="" class="max-h-[75vh] w-auto object-contain mx-auto transition-transform duration-300" />
+    </div>
+    
+    <!-- Caption & Details -->
+    <div id="lightbox-meta" class="mt-4 px-6 py-3 rounded-full glass-card max-w-2xl text-center">
+      <p id="lightbox-caption" class="text-sm font-sans text-stone-200"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    if (!lightbox || !lightboxImg || !lightboxCaption || !closeBtn) return;
+
+    function openLightbox(src: string, caption: string) {
+      lightboxImg!.src = src;
+      lightboxCaption!.textContent = caption || '';
+      lightbox!.classList.remove('opacity-0', 'pointer-events-none');
+      lightbox!.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox!.classList.remove('opacity-100', 'pointer-events-auto');
+      lightbox!.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (lightboxImg) lightboxImg.src = '';
+      }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || (e.target as HTMLElement).closest('#image-lightbox') && !(e.target as HTMLElement).closest('#lightbox-img') && !(e.target as HTMLElement).closest('#lightbox-meta')) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Attach to all images with data-lightbox-trigger or buttons
+    document.querySelectorAll('[data-lightbox-trigger="true"]').forEach((img) => {
+      img.addEventListener('click', () => {
+        const src = img.getAttribute('data-img-src') || (img as HTMLImageElement).src;
+        const caption = img.getAttribute('data-img-caption') || (img as HTMLImageElement).alt;
+        openLightbox(src, caption);
+      });
+      (img as HTMLElement).style.cursor = 'zoom-in';
+    });
+
+    document.querySelectorAll('[data-lightbox-btn]').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const src = btn.getAttribute('data-src') || '';
+        const caption = btn.getAttribute('data-caption') || '';
+        openLightbox(src, caption);
+      });
+    });
+  }
+
+  // Initialize on load and Astro page transitions
+  setupLightbox();
+  document.addEventListener('astro:page-load', setupLightbox);
+</script>

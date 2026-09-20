@@ -1,0 +1,92 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-28 border-t border-alpine-border bg-pine-950/90 text-stone-300 relative overflow-hidden">
+  <!-- Ambient background glow -->
+  <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-32 bg-glacial/10 blur-[100px] rounded-full"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <!-- Col 1: Brand & Philosophy -->
+      <div class="md:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-botanical-dark border border-glacial/40 flex items-center justify-center">
+            <svg class="w-4 h-4 text-glacial" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <span class="font-serif text-xl font-bold tracking-wide text-stone-100">
+            Wanderers & Ridges
+          </span>
+        </div>
+        <p class="text-sm text-stone-400 font-sans leading-relaxed max-w-md">
+          A visual field journal chronicling high Himalayan passes, subterranean karst rivers, motorcycle routes, and remote frontier ridgelines across India.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-pine-900 border border-white/5 text-glacial">
+            ALT: 15,200 FT (BUM LA)
+          </span>
+          <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-pine-900 border border-white/5 text-dawn-ochre">
+            KARST CAVES (JAINTIA)
+          </span>
+          <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-pine-900 border border-white/5 text-stone-300">
+            LEAVE NO TRACE
+          </span>
+        </div>
+      </div>
+
+      <!-- Col 2: Flagship Expeditions -->
+      <div class="space-y-3">
+        <h4 class="font-serif text-sm font-semibold tracking-wider uppercase text-glacial">
+          Expeditions
+        </h4>
+        <ul class="space-y-2 text-sm font-sans">
+          <li>
+            <a href="/trips/arunachal-pradesh-2023" class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
+              <span>Arunachal Winter 2023</span>
+              <span class="text-[10px] text-stone-500">15.2k ft</span>
+            </a>
+          </li>
+          <li>
+            <a href="/trips/meghalaya-canyons-2026" class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
+              <span>Meghalaya Canyons 2026</span>
+              <span class="text-[10px] text-stone-500">Caves & Rivers</span>
+            </a>
+          </li>
+          <li>
+            <a href="/trips" class="text-stone-300 hover:text-glacial transition-colors flex items-center gap-1.5">
+              <span>Complete Trips Archive</span>
+              <span class="text-xs text-glacial">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Author & Ethics -->
+      <div class="space-y-3">
+        <h4 class="font-serif text-sm font-semibold tracking-wider uppercase text-dawn-ochre">
+          Field Ethics
+        </h4>
+        <p class="text-xs text-stone-400 font-sans leading-relaxed">
+          Curated by <strong>Subhasish Pradhan</strong>. Dedicated to responsible high-altitude adventure, respect for indigenous border tribes, and pristine preservation of fragile ecosystems.
+        </p>
+        <div class="pt-2">
+          <a href="/about" class="inline-flex items-center gap-1 text-xs text-glacial hover:underline">
+            Read rider manifesto &amp; photography kit &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom border & copyright -->
+    <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 font-sans gap-4">
+      <p>&copy; {currentYear} Wanderers & Ridges. Written and photographed by Subhasish Pradhan &amp; Expedition Crew.</p>
+      <div class="flex items-center gap-4">
+        <span>Handcrafted with Astro &amp; Tailwind</span>
+        <span>&bull;</span>
+        <span class="text-glacial">Deep Pine Design System</span>
+      </div>
+    </div>
+  </div>
+</footer>

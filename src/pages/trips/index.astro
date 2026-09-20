@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TripsFilter from '../../components/TripsFilter.astro';
+---
+
+<BaseLayout
+  title="Trips Archive | Wanderers & Ridges"
+  description="Explore the complete collection of high-altitude Himalayan and Meghalayan canyon road trip logs."
+  currentPath="/trips"
+>
+  <div class="max-w-7xl mx-auto px-6 pt-12 pb-24">
+    <!-- Breadcrumb & Header -->
+    <div class="space-y-4 mb-12 max-w-3xl">
+      <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-glacial">
+        <a href="/" class="hover:underline">HOME</a>
+        <span>/</span>
+        <span class="text-stone-400">TRIP ARCHIVES</span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-100 tracking-tight">
+        The Expedition Archives
+      </h1>
+      <p class="text-base sm:text-lg text-stone-300 font-sans font-light leading-relaxed">
+        Curated field logs, GPS elevation waypoints, vehicle logistics, and visual essays from our cross-state Himalayan road trips and canyon cave explorations.
+      </p>
+    </div>
+
+    <!-- Filterable Trips Interactive Component -->
+    <TripsFilter />
+
+    <!-- Route Geographic Overview Footer Card -->
+    <div class="mt-20 p-8 sm:p-10 rounded-3xl glass-card border border-white/10 relative overflow-hidden">
+      <div class="pointer-events-none absolute -right-20 -bottom-20 w-80 h-80 bg-glacial/10 rounded-full blur-3xl"></div>
+      
+      <div class="max-w-2xl space-y-4">
+        <span class="text-xs font-mono uppercase tracking-wider text-dawn-ochre font-semibold">Terrain Index</span>
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          From Sub-Zero Tawang to the Karst Valleys of Jaintia
+        </h3>
+        <p class="text-sm text-stone-300 font-sans leading-relaxed">
+          Our route choices focus on distinct geographical extremes: the glacial permafrost passes of the Eastern Himalayas bordering Tibet, and the subterranean subterranean river systems nestled within Meghalaya's limestone ridges.
+        </p>
+
+        <div class="pt-4 flex flex-wrap gap-4 text-xs font-sans">
+          <div class="flex items-center gap-2 text-stone-300">
+            <span class="w-2 h-2 rounded-full bg-glacial"></span>
+            <span>Eastern Himalayas (Arunachal)</span>
+          </div>
+          <div class="flex items-center gap-2 text-stone-300">
+            <span class="w-2 h-2 rounded-full bg-dawn-ochre"></span>
+            <span>Shillong Plateau & Jaintia Karst</span>
+          </div>
+          <div class="flex items-center gap-2 text-stone-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Wah Umngot River Basin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

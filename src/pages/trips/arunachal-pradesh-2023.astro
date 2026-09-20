@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SafeImage from '../../components/SafeImage.astro';
+import ElevationBadge from '../../components/ElevationBadge.astro';
+
+const companions = ['Sovan', 'Aswini', 'Padhy', 'Prasanjeet', 'Pullack'];
+---
+
+<BaseLayout
+  title="Into the Land of Dawn-Lit Mountains: Our Arunachal Winter Road Trip | Wanderers & Ridges"
+  description="High-altitude winter expedition across Sela Pass (13,700 ft), Nuranang Falls, Tawang Monastery, Bum La Pass (15,200 ft), Sangetsar Lake, and Dirang."
+  image="/images/arunachal/PXL_20231219_074434467 sela pass.jpg"
+  currentPath="/trips/arunachal-pradesh-2023"
+>
+  <!-- Article Header / Hero Banner -->
+  <header class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 space-y-8">
+      <!-- Breadcrumb & Tag -->
+      <div class="flex items-center gap-2 text-xs font-mono tracking-wider text-glacial">
+        <a href="/" class="hover:underline">HOME</a>
+        <span>/</span>
+        <a href="/trips" class="hover:underline">TRIPS</a>
+        <span>/</span>
+        <span class="text-stone-400">ARUNACHAL 2023</span>
+      </div>
+
+      <!-- Main Expedition Title -->
+      <div class="space-y-4">
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-stone-100 leading-tight">
+          Into the Land of Dawn-Lit Mountains: <br class="hidden sm:inline" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-glacial via-teal-300 to-dawn-ochre">
+            Our Himalayan Winter Road Trip
+          </span>
+        </h1>
+        <p class="text-stone-300 font-sans text-base sm:text-lg font-light leading-relaxed max-w-3xl">
+          A 6-day expedition ascending from the sub-tropical Brahmaputra plains into the sub-zero permafrost passes of western Arunachal Pradesh, culminating at the sacred Indo-China border post of Bum La.
+        </p>
+      </div>
+
+      <!-- Metadata & Waypoint Bar -->
+      <div class="p-6 rounded-3xl glass-card border border-white/10 flex flex-wrap items-center justify-between gap-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <ElevationBadge elevation="15,200 FT" location="BUM LA PASS" type="summit" />
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-medium bg-pine-900/80 text-stone-300 border border-white/10">
+            <svg class="w-3.5 h-3.5 text-dawn-ochre" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Dec 18 – Dec 23, 2023
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-medium bg-pine-900/80 text-glacial border border-white/10">
+            <svg class="w-3.5 h-3.5 text-glacial" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            4x4 Winter Road Trip
+          </span>
+        </div>
+
+        <!-- Expedition Crew -->
+        <div class="text-xs text-stone-400 font-sans flex items-center gap-2">
+          <span class="text-stone-500">Crew:</span>
+          <div class="flex flex-wrap gap-1 text-stone-300 font-medium">
+            {companions.map((name, i) => (
+              <span>{name}{i < companions.length - 1 ? ',' : ''}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Lead Cover Photo -->
+      <div class="mt-8">
+        <SafeImage
+          src="/images/arunachal/PXL_20231219_074434467 sela pass.jpg"
+          alt="Frozen Sela Pass at 13,700 FT"
+          caption="Cover: Sub-zero winds, frozen lake shores, and fluttering prayer flags at Sela Pass (13,700 ft)."
+          aspectRatio="wide"
+          elevation="13,700 FT"
+          location="Sela Pass, Tawang District"
+          priority={true}
+        />
+      </div>
+    </div>
+  </header>
+
+  <!-- Editorial Itinerary Content -->
+  <article class="max-w-4xl mx-auto px-6 space-y-20">
+    <!-- Day 1 -->
+    <section class="space-y-6 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 01 • DEC 18
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          The Ascent Begins: Into Western Arunachal
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Departing early from the Assam foothills, the air transformed rapidly from humid riverine plains to thin, chilled pine breezes. As we navigated the endless switchbacks rising into West Kameng and Tawang districts, each hairpin curve revealed dramatic canyon cuts and clouds lingering within the deep mountain folds.
+      </p>
+      
+      <SafeImage
+        src="/images/arunachal/PXL_20231218_094839158 way to_tawang.jpg"
+        alt="Winding road to Tawang"
+        caption="Winding through the ascending switchbacks toward western Arunachal Pradesh."
+        aspectRatio="video"
+        location="Route to Tawang"
+      />
+    </section>
+
+    <!-- Day 2 -->
+    <section class="space-y-8 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 02 • DEC 19
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          Sela Pass (13,700 FT) & Nuranang Cataracts
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Crossing Sela Pass is an initiation into true Himalayan winter. At 13,700 feet, the wind roars across Sela Lake—its turquoise waters crystallizing into solid ice under temperatures hovering near -8°C. Countless strands of Buddhist prayer flags whipped fiercely against the steel-blue sky.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <SafeImage
+          src="/images/arunachal/PXL_20231219_102308051 near nurang_falls.jpg"
+          alt="River gorge near Nuranang Falls"
+          caption="The roaring river gorge rushing downstream from Nuranang Falls."
+          aspectRatio="square"
+          location="Jang Gorge"
+        />
+        <SafeImage
+          src="/images/arunachal/PXL_20231219_102725882 Nurang_falls.jpg"
+          alt="Nuranang Falls sheer cataract"
+          caption="The thundering 100-meter sheer cataract of Nuranang Falls."
+          aspectRatio="square"
+          location="Nuranang (Jang) Falls"
+        />
+      </div>
+      <p class="text-stone-300 font-sans text-sm leading-relaxed italic border-l-2 border-glacial pl-4">
+        "Descending toward Jang, the thunder of Nuranang Falls echoed long before we sighted the spray. Plunging over a 100-meter sheer granite precipice, the water churned into pure glacial white foam."
+      </p>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="space-y-8 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 03 • DEC 20
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          The Guardians of Tawang
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Tawang greets travelers with serene majesty. Perched high above the valley floor stands the monumental golden Buddha statue, radiating calm amidst the razor-sharp cold. Below, the ancient terraced roofs of the town and monastery nestled against snow-dusted ridgelines under brilliant cobalt skies.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <SafeImage
+          src="/images/arunachal/PXL_20231220_072846808 tawang_buddha_statue.jpg"
+          alt="Tawang Buddha Statue"
+          caption="The golden Shakyamuni Buddha overlooking the wide Tawang Chu Valley."
+          aspectRatio="portrait"
+          location="Tawang Buddha Viewpoint"
+        />
+        <SafeImage
+          src="/images/arunachal/PXL_20231220_081008195 Tawang.jpg"
+          alt="Panorama of Tawang Valley"
+          caption="Crisp cobalt winter skies over the mountain terraces of Tawang."
+          aspectRatio="portrait"
+          location="Tawang Town & Valley"
+        />
+      </div>
+    </section>
+
+    <!-- Day 4 -->
+    <section class="space-y-8 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-dawn-ochre/20 text-dawn-ochre border border-dawn-ochre/30">
+          DAY 04 • DEC 21
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          The Frozen Frontier: Bum La (15,200 FT) & Sangetsar Lake
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        The road to Bum La Pass is an unforgiving test of 4x4 capability and physical grit. Crossing military checkpoints at Y-Junction under armed escort, the landscape becomes utterly desolate: barren frost-choked plateaus stretching to the Indo-China McMahon Line. At 15,200 feet, every breath requires deliberation.
+      </p>
+
+      <SafeImage
+        src="/images/arunachal/PXL_20231221_045730370 Bumla.jpg"
+        alt="Bum La Pass 15,200 FT"
+        caption="The high-altitude frozen frontier at Bum La Pass on the Indo-China border (15,200 ft)."
+        aspectRatio="video"
+        elevation="15,200 FT"
+        location="Bum La Pass, McMahon Line"
+      />
+
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Descending via the high alpine plateau, we reached Sangetsar Lake (popularly known as Madhuri Lake). Formed by a massive 1950 earthquake, petrified pine trunks still stand upright from the submerged lakebed, their ghostly silhouettes mirrored across glassy turquoise water.
+      </p>
+
+      <SafeImage
+        src="/images/arunachal/PXL_20231221_070939724 madhuri lake.jpg"
+        alt="Sangetsar (Madhuri) Lake"
+        caption="Submerged dead pine trunks rising through the glassy alpine waters of Sangetsar Lake."
+        aspectRatio="wide"
+        elevation="12,100 FT"
+        location="Sangetsar Lake"
+      />
+    </section>
+
+    <!-- Day 5 -->
+    <section class="space-y-8 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 05 • DEC 22
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          Descent into the Pastoral Valleys of Dirang
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        Leaving the frozen heights of Tawang behind, the route toward Bomdila and Dirang descended into warm river basins lined with kiwi orchards and traditional Monpa settlements. In Dirang, walking across the traditional suspension bridge draped in multicolored Buddhist prayer flags over rushing emerald waters provided a profound sense of tranquil relief.
+      </p>
+
+      <SafeImage
+        src="/images/arunachal/PXL_20231222_065051136 route to_bomdila_from Tawang.jpg"
+        alt="Mountain road descending from Tawang"
+        caption="High mountain pass route descending from Tawang into Dirang."
+        aspectRatio="video"
+        location="Tawang–Bomdila Highway"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <SafeImage
+          src="/images/arunachal/PXL_20231222_110043836 Dirang.jpg"
+          alt="Dirang River Basin"
+          caption="The pastoral river basin and orchards of Dirang."
+          aspectRatio="square"
+          location="Dirang Valley"
+        />
+        <SafeImage
+          src="/images/arunachal/PXL_20231222_124855415 Dirang.jpg"
+          alt="Dirang Suspension Bridge"
+          caption="Traditional suspension bridge draped in colorful Buddhist prayer flags."
+          aspectRatio="square"
+          location="Dirang River Bridge"
+        />
+      </div>
+    </section>
+
+    <!-- Day 6 -->
+    <section class="space-y-8 pt-4 border-t border-white/10">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-glacial/20 text-glacial border border-glacial/30">
+          DAY 06 • DEC 23
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+          Flight Over the Valley: Tandem Paragliding
+        </h2>
+      </div>
+      <p class="text-stone-300 font-sans text-base leading-relaxed">
+        The ultimate crescendo of the expedition took us into the skies above Dirang. Taking off from a mountain ridge, we soared on crisp thermal drafts above the sinuous Dirang River, viewing terraced paddy fields and distant snow peaks from the vantage point of soaring Himalayan eagles.
+      </p>
+
+      <SafeImage
+        src="/images/arunachal/PXL_20231223_052646128 Dirang_paragliding.jpg"
+        alt="Tandem Paragliding in Dirang"
+        caption="Tandem paragliding high above the winding rivers and farmsteads of Dirang."
+        aspectRatio="video"
+        location="Dirang Ridge Launch"
+      />
+    </section>
+
+    <!-- Travel Logistics & Field Tips -->
+    <section class="pt-8 border-t border-white/10">
+      <div class="p-8 rounded-3xl glass-card border border-glacial/30 space-y-6">
+        <div class="flex items-center gap-2 text-glacial">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="font-serif text-xl font-bold text-stone-100">
+            Arunachal Expedition Field Logistics & Gear Notes
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm font-sans">
+          <div class="space-y-2">
+            <h4 class="font-semibold text-glacial text-xs uppercase tracking-wider">Permits Required</h4>
+            <p class="text-xs text-stone-300 leading-relaxed">
+              1. <strong>Inner Line Permit (ILP):</strong> Mandatory for all Indian tourists entering Arunachal Pradesh.<br />
+              2. <strong>Bum La Special DC Permit:</strong> Must be stamped in Tawang via the DC office and ratified at the Army Brigade headquarters.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-semibold text-dawn-ochre text-xs uppercase tracking-wider">Vehicle Readiness</h4>
+            <p class="text-xs text-stone-300 leading-relaxed">
+              4x4 or high-clearance SUV with low-range transfer case is mandatory past Sela Pass in winter. Black ice forms on Sela lake bends by 3:00 PM; carry tyre snow chains if tackling post-snowfall ascents.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-semibold text-emerald-400 text-xs uppercase tracking-wider">Winter Cold Defense</h4>
+            <p class="text-xs text-stone-300 leading-relaxed">
+              Temperatures dip to -10°C at Bum La and Sela. Wear 3-layer modular clothing: merino wool base, fleece mid-layer, and windproof 700+ fill down jacket with balaclava and UV-rated polarized eyewear.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next / Prev Trip Navigation -->
+    <div class="pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10">
+      <a href="/trips" class="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-white transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Back to Trip Archives</span>
+      </a>
+
+      <a href="/trips/meghalaya-canyons-2026" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-glacial/20 text-glacial hover:bg-glacial hover:text-pine-950 transition-all text-sm font-semibold">
+        <span>Next Expedition: Meghalaya Canyons 2026</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </article>
+</BaseLayout>

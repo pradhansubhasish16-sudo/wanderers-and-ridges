@@ -1,0 +1,29 @@
+---
+interface Props {
+  elevation: string;
+  location?: string;
+  type?: 'summit' | 'pass' | 'canyon' | 'default';
+}
+
+const { elevation, location, type = 'default' } = Astro.props;
+
+const borderStyles = {
+  summit: 'border-dawn-ochre/40 text-dawn-ochre bg-dawn-ochre/10',
+  pass: 'border-glacial/40 text-glacial bg-glacial/10',
+  canyon: 'border-emerald-400/40 text-emerald-400 bg-emerald-900/20',
+  default: 'border-white/20 text-stone-300 bg-pine-900/60',
+}[type];
+---
+
+<div class={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono tracking-wider border backdrop-blur-md shadow-sm ${borderStyles}`}>
+  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+  </svg>
+  <span class="font-bold">{elevation}</span>
+  {location && (
+    <>
+      <span class="opacity-40">•</span>
+      <span class="font-sans font-normal opacity-90">{location}</span>
+    </>
+  )}
+</div>

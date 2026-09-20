@@ -1,0 +1,112 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/trips', label: 'Trips Archive' },
+  { href: '/trips/arunachal-pradesh-2023', label: 'Arunachal 2023' },
+  { href: '/trips/meghalaya-canyons-2026', label: 'Meghalaya 2026' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<header class="sticky top-4 z-40 px-4 sm:px-6 w-full max-w-7xl mx-auto">
+  <nav class="glass-nav rounded-full px-5 py-3 sm:px-7 sm:py-3.5 flex items-center justify-between shadow-2xl transition-all duration-300">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center gap-2.5 group">
+      <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-botanical-dark to-glacial/40 flex items-center justify-center border border-glacial/40 group-hover:border-glacial transition-colors">
+        <svg class="w-5 h-5 text-glacial group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-serif text-base sm:text-lg font-semibold tracking-wide text-stone-100 group-hover:text-glacial transition-colors">
+          Wanderers & Ridges
+        </span>
+        <span class="text-[10px] uppercase font-sans tracking-widest text-glacial/80 -mt-1 font-medium hidden sm:inline">
+          High Passes & Canyon Trails
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="hidden md:flex items-center gap-1 lg:gap-2">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 ${
+              isActive
+                ? 'bg-glacial/20 text-glacial border border-glacial/40 shadow-sm'
+                : 'text-stone-300 hover:text-white hover:bg-pine-800/60'
+            }`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Right Accent Badge -->
+    <div class="hidden sm:flex items-center gap-3">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-pine-900/80 text-dawn-ochre border border-dawn-ochre/30 shadow-inner">
+        <span class="w-1.5 h-1.5 rounded-full bg-dawn-ochre animate-pulse"></span>
+        Field Notes 2026
+      </span>
+    </div>
+
+    <!-- Mobile Hamburger Button -->
+    <button
+      id="mobile-menu-btn"
+      type="button"
+      class="md:hidden p-2 rounded-full text-stone-300 hover:text-white hover:bg-pine-800/80 transition-colors"
+      aria-label="Toggle navigation menu"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden mt-2 p-4 rounded-3xl glass-card border border-glacial/20 shadow-2xl flex flex-col gap-2">
+    {navLinks.map((link) => {
+      const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+      return (
+        <a
+          href={link.href}
+          class={`px-4 py-2.5 rounded-xl text-sm font-medium tracking-wide transition-colors ${
+            isActive
+              ? 'bg-glacial/20 text-glacial font-semibold'
+              : 'text-stone-300 hover:text-white hover:bg-pine-800/60'
+          }`}
+        >
+          {link.label}
+        </a>
+      );
+    })}
+    <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs text-stone-400">
+      <span>Author: Subhasish Pradhan</span>
+      <span class="text-glacial">High Himalayan Road Trips</span>
+    </div>
+  </div>
+</header>
+
+<script>
+  function setupMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+  setupMobileMenu();
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>

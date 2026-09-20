@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-dark: #0B1311;
+    --color-surface-dark: #13221E;
+    --color-surface-card: #182C27;
+    --color-border-dark: rgba(45, 106, 79, 0.28);
+    --color-glacial: #38A3A5;
+    --color-dawn: #DDA15E;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #0B1311;
+    color: #E2E8F0;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: #0B1311;
+    background-image: 
+      radial-gradient(ellipse at 20% -10%, rgba(56, 163, 165, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(45, 106, 79, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(221, 161, 94, 0.08) 0%, transparent 60%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B1311;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #182C27;
+    border-radius: 9999px;
+    border: 2px solid #0B1311;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #38A3A5;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(19, 34, 30, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(45, 106, 79, 0.28);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+  }
+
+  .glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    background: rgba(24, 44, 39, 0.85);
+    border-color: rgba(56, 163, 165, 0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(56, 163, 165, 0.2);
+  }
+
+  .glass-nav {
+    background: rgba(11, 19, 17, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(45, 106, 79, 0.3);
+  }
+
+  .text-glow-glacial {
+    text-shadow: 0 0 20px rgba(56, 163, 165, 0.4);
+  }
+
+  .text-glow-dawn {
+    text-shadow: 0 0 20px rgba(221, 161, 94, 0.4);
+  }
+
+  .topographic-bg {
+    background-image: radial-gradient(rgba(56, 163, 165, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
