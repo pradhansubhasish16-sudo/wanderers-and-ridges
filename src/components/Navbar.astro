@@ -3,7 +3,7 @@ interface Props {
   currentPath?: string;
 }
 
-const { currentPath = '' } = Astro.props;
+const { currentPath = Astro.url.pathname } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -14,6 +14,25 @@ const navLinks = [
   { href: `${base}/trips/meghalaya-canyons-2026`, label: 'Meghalaya 2026' },
   { href: `${base}/about`, label: 'About' },
 ];
+
+function isLinkActive(linkHref: string, current: string) {
+  const baseClean = (base || '').replace(/\/$/, '');
+  const normCurrent = current.replace(/\/$/, '') || '/';
+  const normLink = linkHref.replace(/\/$/, '') || '/';
+
+  // Strip base prefix if present
+  const relCurrent = (baseClean && normCurrent.startsWith(baseClean))
+    ? (normCurrent.slice(baseClean.length) || '/')
+    : normCurrent;
+  const relLink = (baseClean && normLink.startsWith(baseClean))
+    ? (normLink.slice(baseClean.length) || '/')
+    : normLink;
+
+  if (relLink === '/') {
+    return relCurrent === '/';
+  }
+  return relCurrent === relLink || relCurrent.startsWith(relLink + '/');
+}
 ---
 
 <header class="sticky top-4 z-40 px-4 sm:px-6 w-full max-w-7xl mx-auto">
@@ -38,17 +57,14 @@ const navLinks = [
     <!-- Desktop Navigation Links -->
     <div class="hidden md:flex items-center gap-1 lg:gap-2">
       {navLinks.map((link) => {
-        const isHome = link.href === `${base}/`;
-        const isActive = isHome
-          ? (currentPath === '/' || currentPath === `${base}/` || currentPath === '')
-          : (currentPath === link.href || (link.href !== `${base}/` && (currentPath.startsWith(link.href) || (base && currentPath.startsWith(link.href.replace(base, ''))))));
+        const active = isLinkActive(link.href, currentPath);
         return (
           <a
             href={link.href}
-            class={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 ${
-              isActive
-                ? 'bg-glacial/20 text-glacial border border-glacial/40 shadow-sm'
-                : 'text-stone-300 hover:text-white hover:bg-pine-800/60'
+            class={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 border ${
+              active
+                ? 'text-[#DDA15E] bg-[#DDA15E]/15 border-[#DDA15E]/60 border-b-2 font-semibold shadow-sm'
+                : 'border-transparent text-stone-300 hover:text-white hover:bg-pine-800/60'
             }`}
           >
             {link.label}
@@ -79,18 +95,15 @@ const navLinks = [
   </nav>
 
   <!-- Mobile Dropdown Menu -->
-  <div id="mobile-menu" class="hidden md:hidden mt-2 p-4 rounded-3xl glass-card border border-glacial/20 shadow-2xl flex flex-col gap-2">
+  <div id="mobile-menu" class="hidden mt-2 p-4 rounded-3xl glass-card border border-glacial/20 shadow-2xl flex flex-col gap-2">
     {navLinks.map((link) => {
-      const isHome = link.href === `${base}/`;
-      const isActive = isHome
-        ? (currentPath === '/' || currentPath === `${base}/` || currentPath === '')
-        : (currentPath === link.href || (link.href !== `${base}/` && (currentPath.startsWith(link.href) || (base && currentPath.startsWith(link.href.replace(base, ''))))));
+      const active = isLinkActive(link.href, currentPath);
       return (
         <a
           href={link.href}
           class={`px-4 py-2.5 rounded-xl text-sm font-medium tracking-wide transition-colors ${
-            isActive
-              ? 'bg-glacial/20 text-glacial font-semibold'
+            active
+              ? 'text-[#DDA15E] bg-[#DDA15E]/15 border-l-4 border-[#DDA15E] font-semibold'
               : 'text-stone-300 hover:text-white hover:bg-pine-800/60'
           }`}
         >
@@ -104,6 +117,14 @@ const navLinks = [
     </div>
   </div>
 </header>
+
+<style>
+  @media (min-width: 768px) {
+    #mobile-menu {
+      display: none !important;
+    }
+  }
+</style>
 
 <script>
   function setupMobileMenu() {

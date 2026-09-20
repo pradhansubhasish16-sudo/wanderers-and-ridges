@@ -5,7 +5,11 @@ dist/
 dist_old/
 # Local testing and preview
 playwright/
+tests/
+playwright.config.ts
 server.js
+preview-server.mjs
+scripts/
 test-results/
 playwright-report/
 

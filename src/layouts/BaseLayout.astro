@@ -15,7 +15,7 @@ const {
   title = 'Wanderers & Ridges | High Mountain Passes & Canyon Trails',
   description = 'High mountain passes, subterranean rivers, and canyon trails across India. A personal travel journal by Subhasish Pradhan.',
   image = '/images/arunachal/PXL_20231219_074434467 sela pass.jpg',
-  currentPath = '',
+  currentPath = Astro.url.pathname,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://wanderersandridges.local');

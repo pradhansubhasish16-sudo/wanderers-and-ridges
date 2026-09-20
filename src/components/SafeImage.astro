@@ -4,6 +4,7 @@ interface Props {
   alt: string;
   caption?: string;
   aspectRatio?: 'video' | 'square' | 'wide' | 'portrait' | 'auto';
+  objectPosition?: string;
   className?: string;
   priority?: boolean;
   elevation?: string;
@@ -16,6 +17,7 @@ const {
   alt,
   caption,
   aspectRatio = 'auto',
+  objectPosition = 'object-center',
   className = '',
   priority = false,
   elevation,
@@ -28,6 +30,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const normalizedSrc = (src.startsWith('/') && !src.startsWith(base + '/')) ? `${base}${src}` : src;
 // Safely encode URI to handle filenames containing spaces or special characters
 const safeSrc = encodeURI(normalizedSrc);
+const safeWebpSrc = safeSrc.replace(/\.(jpe?g|png)$/i, '.webp');
 
 const aspectClasses = {
   video: 'aspect-video',
@@ -41,19 +44,22 @@ const aspectClasses = {
 <figure class={`group relative overflow-hidden rounded-2xl glass-card transition-all duration-500 ${className}`}>
   <!-- Image container -->
   <div class={`relative w-full overflow-hidden ${aspectClasses} bg-pine-900/60`}>
-    <img
-      src={safeSrc}
-      alt={alt}
-      loading={priority ? 'eager' : 'lazy'}
-      decoding="async"
-      class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-      data-lightbox-trigger={lightbox ? 'true' : undefined}
-      data-img-src={safeSrc}
-      data-img-caption={caption || alt}
-      data-img-location={location || ''}
-      data-img-elevation={elevation || ''}
-      onerror="this.classList.add('opacity-40'); this.insertAdjacentHTML('afterend', '<div class=\'absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-xs text-stone-400 font-sans\'><span class=\'text-dawn-ochre mb-1 text-sm font-semibold\'>Mountain Vista</span><span>Asset queued for sync</span></div>');"
-    />
+    <picture>
+      <source srcset={safeWebpSrc} type="image/webp" />
+      <img
+        src={safeWebpSrc}
+        alt={alt}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        class={`h-full w-full object-cover ${objectPosition} transition-transform duration-700 ease-out group-hover:scale-105`}
+        data-lightbox-trigger={lightbox ? 'true' : undefined}
+        data-img-src={safeWebpSrc}
+        data-img-caption={caption || alt}
+        data-img-location={location || ''}
+        data-img-elevation={elevation || ''}
+        onerror={`if (this.src !== '${safeSrc}') { this.src = '${safeSrc}'; } else { this.classList.add('opacity-40'); this.insertAdjacentHTML('afterend', '<div class=\\'absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-xs text-stone-400 font-sans\\'><span class=\\'text-dawn-ochre mb-1 text-sm font-semibold\\'>Mountain Vista</span><span>Asset queued for sync</span></div>'); }`}
+      />
+    </picture>
 
     <!-- Subtle gradient overlay on hover -->
     <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-pine-950/80 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
@@ -88,7 +94,7 @@ const aspectClasses = {
         title="View full image"
         aria-label="Enlarge image"
         data-lightbox-btn
-        data-src={safeSrc}
+        data-src={safeWebpSrc}
         data-caption={caption || alt}
       >
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -69,6 +69,7 @@ const normalize = (p: string) => (p.startsWith('/') && !p.startsWith(base + '/')
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="trips-grid">
     {TRIPS_DATA.map((trip) => {
       const safeCoverImage = encodeURI(normalize(trip.coverImage));
+      const safeWebpCover = safeCoverImage.replace(/\.(jpe?g|png)$/i, '.webp');
       const tripUrl = normalize(trip.slug);
       return (
         <article
@@ -78,13 +79,16 @@ const normalize = (p: string) => (p.startsWith('/') && !p.startsWith(base + '/')
         >
           <!-- Image Header -->
           <div class="relative h-64 sm:h-72 w-full overflow-hidden bg-pine-900">
-            <img
-              src={safeCoverImage}
-              alt={trip.title}
-              loading="lazy"
-              class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              onerror="this.classList.add('opacity-40');"
-            />
+            <picture>
+              <source srcset={safeWebpCover} type="image/webp" />
+              <img
+                src={safeWebpCover}
+                alt={trip.title}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                onerror={`if (this.src !== '${safeCoverImage}') { this.src = '${safeCoverImage}'; } else { this.classList.add('opacity-40'); }`}
+              />
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-t from-pine-950 via-pine-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
 
             <!-- Elevation & Mode Badges -->
