@@ -13,6 +13,11 @@ scripts/
 test-results/
 playwright-report/
 
+# Heavy uncompressed media assets (optimized assets committed only)
+public/images/meghalaya/meghalaya_trip_map.mp4
+public/images/**/*.raw.*
+
+
 # Environment files
 .env
 .env.production
