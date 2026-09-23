@@ -12,6 +12,7 @@ preview-server.mjs
 scripts/
 test-results/
 playwright-report/
+.agent/
 
 # Heavy uncompressed media assets (optimized assets committed only)
 public/images/meghalaya/meghalaya_trip_map.mp4
