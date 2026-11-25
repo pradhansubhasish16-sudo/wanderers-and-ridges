@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
+---
+
+<BaseLayout
+  title="Trail Not Found (404) | Wanderers & Ridges"
+  description="The requested expedition log or trail route could not be found."
+>
+  <section class="max-w-3xl mx-auto px-6 py-28 text-center space-y-6">
+    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium tracking-wider bg-pine-900/90 text-dawn-ochre border border-dawn-ochre/30">
+      WAYPOINT MISSING • 404
+    </span>
+
+    <h1 class="font-serif text-4xl sm:text-6xl font-bold text-stone-100">
+      Off the Marked Ridge
+    </h1>
+
+    <p class="text-base sm:text-lg text-stone-300 font-sans font-light leading-relaxed max-w-xl mx-auto">
+      This route marker does not exist or has shifted. Head back to base camp or browse the expedition archives.
+    </p>
+
+    <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href={withBase('/')}
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-glacial text-pine-950 font-sans font-semibold text-sm hover:bg-glacial-light transition-colors shadow-glow-teal"
+      >
+        <span>Return Home</span>
+      </a>
+      <a
+        href={withBase('/trips')}
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card text-stone-200 hover:text-white hover:border-glacial/50 font-sans font-medium text-sm transition-colors"
+      >
+        <span>Explore Trips Archive</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

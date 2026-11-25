@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import ImageLightbox from '../components/ImageLightbox.astro';
+import { withBase } from '../utils/paths';
 
 interface Props {
   title?: string;
@@ -18,7 +19,11 @@ const {
   currentPath = Astro.url.pathname,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://wanderersandridges.local');
+const siteOrigin = Astro.site || 'https://wanderersandridges.local';
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+const ogImageURL = image.startsWith('http')
+  ? image
+  : new URL(encodeURI(withBase(image)), siteOrigin).toString();
 ---
 
 <!doctype html>
@@ -40,18 +45,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://wanderer
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
 
-    <!-- Preconnect to Google Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    />
   </head>
 
   <body class="min-h-screen flex flex-col bg-pine-950 text-stone-200 antialiased selection:bg-glacial/30 selection:text-white">
     <!-- Atmospheric Ambient Lighting Elements -->
-    <div class="fixed top-0 left-1/4 w-[500px] h-[350px] bg-glacial/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
-    <div class="fixed top-1/3 right-10 w-[600px] h-[400px] bg-botanical-green/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
-    <div class="fixed bottom-10 left-10 w-[550px] h-[350px] bg-dawn-ochre/5 blur-[140px] rounded-full pointer-events-none -z-10"></div>
+    <div class="fixed top-0 left-1/4 w-[500px] h-[350px] bg-glacial/10 blur-[100px] md:blur-[130px] rounded-full pointer-events-none -z-10"></div>
+    <div class="fixed top-1/3 right-10 w-[600px] h-[400px] bg-botanical-green/10 blur-[110px] md:blur-[150px] rounded-full pointer-events-none -z-10"></div>
+    <div class="fixed bottom-10 left-10 w-[550px] h-[350px] bg-dawn-ochre/5 blur-[100px] md:blur-[140px] rounded-full pointer-events-none -z-10"></div>
 
     <Navbar currentPath={currentPath} />
 
@@ -60,8 +73,74 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://wanderer
     </main>
 
     <Footer />
-    
+
     <!-- Fullscreen Lightbox for photos -->
     <ImageLightbox />
+
+    <script>
+      // Safe image fallback handler (captures non-bubbling img error events)
+      if (!(window as any).__safeImageListenerBound) {
+        (window as any).__safeImageListenerBound = true;
+        document.addEventListener(
+          'error',
+          (event) => {
+            const target = event.target;
+            if (!(target instanceof HTMLImageElement)) return;
+            const fallback = target.dataset.fallbackSrc;
+            if (fallback && target.dataset.fallbackApplied !== 'true') {
+              target.dataset.fallbackApplied = 'true';
+              target.src = fallback;
+              return;
+            }
+            if (target.dataset.safeImage === 'true' && !target.dataset.placeholderShown) {
+              target.dataset.placeholderShown = 'true';
+              target.classList.add('opacity-40');
+              const placeholder = document.createElement('div');
+              placeholder.className =
+                'absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-xs text-stone-400 font-sans';
+              const title = document.createElement('span');
+              title.className = 'text-dawn-ochre mb-1 text-sm font-semibold';
+              title.textContent = 'Mountain Vista';
+              const subtitle = document.createElement('span');
+              subtitle.textContent = 'Asset queued for sync';
+              placeholder.append(title, subtitle);
+              target.insertAdjacentElement('afterend', placeholder);
+            }
+          },
+          true
+        );
+      }
+
+      // Lazy viewport autoplay for route telemetry videos
+      function initRouteVideos() {
+        const videos = document.querySelectorAll<HTMLVideoElement>('video[data-autoplay-on-view="true"]');
+        if (!videos.length) return;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reducedMotion || !('IntersectionObserver' in window)) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const video = entry.target as HTMLVideoElement;
+              if (entry.isIntersecting) {
+                video.play().catch(() => {});
+              } else {
+                video.pause();
+              }
+            });
+          },
+          { threshold: 0.25 }
+        );
+
+        videos.forEach((video) => {
+          if (video.dataset.observerBound === 'true') return;
+          video.dataset.observerBound = 'true';
+          observer.observe(video);
+        });
+      }
+
+      initRouteVideos();
+      document.addEventListener('astro:page-load', initRouteVideos);
+    </script>
   </body>
 </html>

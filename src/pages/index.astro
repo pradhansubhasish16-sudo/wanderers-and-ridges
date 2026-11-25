@@ -3,35 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SafeImage from '../components/SafeImage.astro';
 import TripCard from '../components/TripCard.astro';
 import ElevationBadge from '../components/ElevationBadge.astro';
+import { TRIPS } from '../data/trips';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-const featuredTrips = [
-  {
-    title: 'Into the Land of Dawn-Lit Mountains: Our Himalayan Winter Road Trip',
-    slug: '/trips/arunachal-pradesh-2023',
-    coverImage: '/images/arunachal/PXL_20231219_074434467 sela pass.jpg',
-    destination: 'Western Arunachal Pradesh (Tawang, Bum La, Dirang)',
-    date: 'Dec 18 – Dec 23, 2023',
-    elevation: '15,200 FT',
-    category: 'Himalayan High Passes',
-    mode: '4x4 Road Trip',
-    excerpt: 'An extreme winter transit across frozen high-altitude lakes, military frontier outposts, thundering cataracts at Nuranang, and ancient Buddhist sanctuaries overlooking the eastern Himalayas.',
-    keyStops: ['Sela Pass (13,700 ft)', 'Nuranang Falls', 'Tawang Buddha', 'Bum La Pass (15,200 ft)', 'Sangetsar Lake', 'Dirang Valley'],
-  },
-  {
-    title: 'Chasing Clouds, Craters & Crystal Waters: A Meghalaya Motorcycle Odyssey',
-    slug: '/trips/meghalaya-canyons-2026',
-    coverImage: '/images/meghalaya/PXL_20260120_083114682 Krem Chympe.jpg',
-    destination: 'West & East Jaintia Hills, East Khasi Hills',
-    date: 'Jan 17 – Jan 23, 2026',
-    elevation: '4,900 FT',
-    category: 'Canyons & Caves',
-    mode: 'Motorcycle Touring',
-    excerpt: 'Carving through cloud-shrouded serpentine mountain tarmac, wading turquoise river canyons, and paddling bamboo rafts into the towering limestone caverns of Krem Chympe.',
-    keyStops: ['Phe Phe Falls', 'Krem Chympe River Gorge', 'Wah Umngot River', 'Mawsmai Fossils', 'Mawkdok Dympep Valley'],
-  },
-];
 ---
 
 <BaseLayout
@@ -132,7 +106,7 @@ const featuredTrips = [
           <div class="text-xs font-sans uppercase tracking-widest text-stone-400">Flagship Expeditions</div>
         </div>
         <div class="space-y-1">
-          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-stone-100">1,850+ KM</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-stone-100">3,800+ KM</div>
           <div class="text-xs font-sans uppercase tracking-widest text-stone-400">4x4 & Motorcycle Trails</div>
         </div>
         <div class="space-y-1">
@@ -162,7 +136,7 @@ const featuredTrips = [
 
     <!-- Cards Grid -->
     <div class="space-y-10">
-      {featuredTrips.map((trip) => (
+      {TRIPS.map((trip) => (
         <TripCard
           title={trip.title}
           slug={trip.slug}
@@ -173,7 +147,7 @@ const featuredTrips = [
           category={trip.category}
           mode={trip.mode}
           excerpt={trip.excerpt}
-          keyStops={trip.keyStops}
+          keyStops={trip.featuredKeyStops}
           featured={true}
         />
       ))}

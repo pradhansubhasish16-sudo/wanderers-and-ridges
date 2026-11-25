@@ -36,11 +36,11 @@ function isLinkActive(linkHref: string, current: string) {
 ---
 
 <header class="sticky top-4 z-40 px-4 sm:px-6 w-full max-w-7xl mx-auto">
-  <nav class="glass-nav rounded-full px-5 py-3 sm:px-7 sm:py-3.5 flex items-center justify-between shadow-2xl transition-all duration-300">
+  <nav class="glass-nav rounded-full px-5 py-3 sm:px-7 sm:py-3.5 flex items-center justify-between shadow-2xl transition-all duration-300" aria-label="Primary navigation">
     <!-- Brand Logo -->
     <a href={`${base}/`} class="flex items-center gap-2.5 group">
       <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-botanical-dark to-glacial/40 flex items-center justify-center border border-glacial/40 group-hover:border-glacial transition-colors">
-        <svg class="w-5 h-5 text-glacial group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-5 h-5 text-glacial group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       </div>
@@ -61,6 +61,7 @@ function isLinkActive(linkHref: string, current: string) {
         return (
           <a
             href={link.href}
+            aria-current={active ? 'page' : undefined}
             class={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 border ${
               active
                 ? 'text-[#DDA15E] bg-[#DDA15E]/15 border-[#DDA15E]/60 border-b-2 font-semibold shadow-sm'
@@ -76,7 +77,7 @@ function isLinkActive(linkHref: string, current: string) {
     <!-- Right Accent Badge -->
     <div class="hidden sm:flex items-center gap-3">
       <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-pine-900/80 text-dawn-ochre border border-dawn-ochre/30 shadow-inner">
-        <span class="w-1.5 h-1.5 rounded-full bg-dawn-ochre animate-pulse"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-dawn-ochre animate-pulse" aria-hidden="true"></span>
         Field Notes 2026
       </span>
     </div>
@@ -87,8 +88,10 @@ function isLinkActive(linkHref: string, current: string) {
       type="button"
       class="md:hidden p-2 rounded-full text-stone-300 hover:text-white hover:bg-pine-800/80 transition-colors"
       aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
@@ -101,6 +104,7 @@ function isLinkActive(linkHref: string, current: string) {
       return (
         <a
           href={link.href}
+          aria-current={active ? 'page' : undefined}
           class={`px-4 py-2.5 rounded-xl text-sm font-medium tracking-wide transition-colors ${
             active
               ? 'text-[#DDA15E] bg-[#DDA15E]/15 border-l-4 border-[#DDA15E] font-semibold'
@@ -130,10 +134,24 @@ function isLinkActive(linkHref: string, current: string) {
   function setupMobileMenu() {
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
-    if (!btn || !menu) return;
+    if (!btn || !menu || btn.dataset.initialized === 'true') return;
+    btn.dataset.initialized = 'true';
+
+    const setOpen = (isOpen: boolean) => {
+      menu.classList.toggle('hidden', !isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
+    };
 
     btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      const isCurrentlyHidden = menu.classList.contains('hidden');
+      setOpen(isCurrentlyHidden);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        setOpen(false);
+        btn.focus();
+      }
     });
   }
   setupMobileMenu();
